@@ -169,8 +169,9 @@ function consume(a, b, cb) {
 /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
 // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
 
-function add(/*Your Code Here */) {
+function add(a, b) {
   /*Your Code Here*/
+  return a + b;
 }
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
