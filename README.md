@@ -57,13 +57,22 @@ Return value: This method returns a new array consisting of only those elements 
 Callbacks are a great way to handle something after something else has been completed. By something here we mean a function execution. If we want to execute a function right after the return of some other function, then callbacks can be used.
 Callbacks are executed in some event or change of state.
 
-Higher order function - A Higher-Order function is a function that receives a function as an argument otherwise returns function as output
+Higher order function - A Higher-Order function is a function that receives a function as an argument otherwise returns function as output.
 
 3. Explain what a closure is.
 
+n JavaScript, a closure is a function that references variables in the outer scope from its inner scope.A child function keep the environment of the parent scope even after the parent function has already executed.
+
 4. Describe the four principles of the 'this' keyword.
 
+-default binding - this will refer to window context which it’s the default context.
+-implicit binding - the object that is standing before the dot is what this keyword will be bound to.
+-explicit binding - In this case, you can force a function call to use a particular object for this binding, without putting a property function reference on the object. so we explicitly say to a function what object it should use for this — using functions such as call, apply and bind
+-new binding-when the new keyword is used(a constructor), this is bound to the new object being created.Properties and methods are added to the object referenced by this.
+
 5. Why do we need super() in an extended class?
+
+We need the super keyword in an extended class because it is used to call the constructor of its parent class to access the parent's properties and methods.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
