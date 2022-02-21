@@ -17,6 +17,9 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀:
 
+
+A nested function can access other local functions, variables, constants, types, classes, etc. that are in the same scope.The scope of any variable is the workspace of the outermost function in which it is defined and used.
+
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Use summation to do the following:
     1. Receive a number 
@@ -36,6 +39,7 @@ function summation(num) {
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
 
+// eslint-disable-next-line no-unused-vars
 const zooAnimals = [
   {
     animal_name: "Jackal, asiatic",
@@ -124,9 +128,11 @@ function animalNames(array) {
 
 function lowerCaseNames(array) {
   /*Your Code Here*/
+  let lowCaseNames = [];
   array.map(function (item) {
-    return item.animal_name.toLowerCase();
+    lowCaseNames.push(item.animal_name.toLowerCase());
   });
+  return lowCaseNames;
 }
 
 /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -136,10 +142,9 @@ function lowerCaseNames(array) {
 
 function lowPopulationAnimals(array) {
   /*Your Code Here*/
+
   array.filter(function (item) {
-    if (item.population < 5) {
-      return item;
-    }
+    item.population < 5;
   });
 }
 
@@ -151,6 +156,7 @@ function lowPopulationAnimals(array) {
 
 function USApop(array) {
   /*Your Code Here*/
+  array.reduce((a, b) => a + b.population, 0);
 }
 
 // 🦁🦁🦁 Callbacks 🦁🦁🦁
@@ -176,56 +182,96 @@ function add(a, b) {
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
 
-function multiply(/*Your Code Here */) {
+function multiply(a, b) {
   /*Your Code Here */
+  return a * b;
 }
 
 // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
 
-function greeting(/*Your Code Here */) {
-  return; /*Your Code Here */
+function greeting(a, b) {
+  /*Your Code Here */
+  return `Hello ${a} ${b}, nice to meet you!`;
 }
 
 // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-// console.log(consume(2, 2, add)); // 4
-// console.log(consume(10, 16, multiply)); // 160
-// console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+console.log(consume(2, 2, add)); // 4
+console.log(consume(10, 16, multiply)); // 160
+console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 // 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
 //🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
 /* 🐴🐴🐴 Step 1: Base Constructor 🐴🐴🐴
  Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
 */
-function CuboidMaker(/*Your Code Here */) {
+function CuboidMaker(length, width, height) {
   /*Your Code Here */
+  this.length = length;
+  this.width = width;
+  this.height = height;
 }
 
 /* 🐴🐴🐴 Step 2: Volume Method 🐴🐴🐴
   Create a method called volume using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   Formula for cuboid volume: length * width * height   */
 
+CuboidMaker.prototype.volume = function () {
+  return this.length * this.width * this.height;
+};
+
 /* 🐴🐴🐴 Step 3: Surface Area Method 🐴🐴🐴
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   Formula for cuboid surface area of a cube: 
   2 * (length * width + length * height + width * height)  */
 
+CuboidMaker.prototype.surfaceArea = function () {
+  return (
+    2 *
+    (this.length * this.width +
+      this.length * this.height +
+      this.width * this.height)
+  );
+};
+
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker 🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
 
+const cuboid = new CuboidMaker(4, 5, 5);
+
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-// console.log(cuboid.volume()); // 100
-// console.log(cuboid.surfaceArea()); // 130
+console.log(cuboid.volume()); // 100
+console.log(cuboid.surfaceArea()); // 130
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
-class CuboidMakerTwo {}
+
+class CuboidMakerTwo {
+  constructor(length, width, height) {
+    this.length = length;
+    this.width = width;
+    this.height = height;
+  }
+  volume() {
+    return this.length * this.width * this.height;
+  }
+  surfaceArea() {
+    return (
+      2 *
+      (this.length * this.width +
+        this.length * this.height +
+        this.width * this.height)
+    );
+  }
+}
+
+const cuboidTwo = new CuboidMakerTwo(4, 5, 5);
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-// console.log(cuboidTwo.volume()); // 100
-// console.log(cuboidTwo.surfaceArea()); // 130
+console.log(cuboidTwo.volume()); // 100
+console.log(cuboidTwo.surfaceArea()); // 130
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo() {
