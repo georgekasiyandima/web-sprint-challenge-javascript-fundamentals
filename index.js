@@ -128,11 +128,11 @@ function animalNames(array) {
 
 function lowerCaseNames(array) {
   /*Your Code Here*/
-  let lowCaseNames = [];
+
   array.map(function (item) {
     lowCaseNames.push(item.animal_name.toLowerCase());
-  });
-  return lowCaseNames;
+  }
+
 }
 
 /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -144,7 +144,9 @@ function lowPopulationAnimals(array) {
   /*Your Code Here*/
 
   array.filter(function (item) {
-    item.population < 5;
+   if (item.population < 5) {
+     return item;
+   }
   });
 }
 
