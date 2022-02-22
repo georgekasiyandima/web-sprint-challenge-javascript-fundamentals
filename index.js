@@ -18,7 +18,7 @@ myFunction();
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀:
 
 
-A nested function can access other local functions, variables, constants, types, classes, etc. that are in the same scope.The scope of any variable is the workspace of the outermost function in which it is defined and used.
+//A nested function can access other local functions, variables, constants, types, classes, etc. that are in the same scope.The scope of any variable is the workspace of the outermost function in which it is defined and used.
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Use summation to do the following:
@@ -114,7 +114,7 @@ function animalNames(array) {
   let displayNames = [];
   array.forEach(function (item) {
     displayNames.push(
-      `name : ${item.animal_name}, scientific : ${item.scientific_name}`
+      `name: ${item.animal_name}, scientific: ${item.scientific_name}`
     );
   });
   return displayNames;
@@ -128,11 +128,11 @@ function animalNames(array) {
 
 function lowerCaseNames(array) {
   /*Your Code Here*/
-
+let lowCaseNames = []
   array.map(function (item) {
     lowCaseNames.push(item.animal_name.toLowerCase());
-  }
-
+  })
+ return lowCaseNames
 }
 
 /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -142,12 +142,7 @@ function lowerCaseNames(array) {
 
 function lowPopulationAnimals(array) {
   /*Your Code Here*/
-
-  array.filter(function (item) {
-   if (item.population < 5) {
-     return item;
-   }
-  });
+  return array.filter((item) => item.population < 5);
 }
 
 /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -158,7 +153,7 @@ function lowPopulationAnimals(array) {
 
 function USApop(array) {
   /*Your Code Here*/
-  array.reduce((a, b) => a + b.population, 0);
+  return array.reduce((a, b) => a + b.population, 0);
 }
 
 // 🦁🦁🦁 Callbacks 🦁🦁🦁
@@ -257,7 +252,7 @@ class CuboidMakerTwo {
     this.height = height;
   }
   volume() {
-    return this.length * this.width * this.height;
+    return Number(this.length * this.width * this.height);
   }
   surfaceArea() {
     return (
